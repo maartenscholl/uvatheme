@@ -1,0 +1,59 @@
+\mode<presentation>
+\ProvidesPackage{uvatheme}
+
+% options
+\RequirePackage{kvoptions}
+\SetupKeyvalOptions{family=UT,prefix=UT@}
+\DeclareStringOption []{department}[]
+\DeclareBoolOption[false]{dutch}
+\DeclareBoolOption[true]{fonts}
+\ProcessKeyvalOptions*
+
+
+% Requirement
+\RequirePackage{tikz}
+\RequirePackage[T1]{fontenc}
+
+
+
+% Settings
+\useinnertheme{uva}
+\useoutertheme{uva}
+\usecolortheme{uva}
+
+
+% Enumerations and Items    
+
+\setbeamertemplate{itemize item}{\scriptsize\raise1.25pt\hbox{\textcolor{uvaaccent}{\donotcoloroutermaths$\bullet$}}}
+\setbeamertemplate{itemize subitem}{\tiny\raise1.5pt\hbox{\textcolor{uvafocus}{\donotcoloroutermaths$\bullet$}}}
+\setbeamertemplate{itemize subsubitem}{\tiny\raise1.5pt\hbox{\textcolor{uvaemphasis}{\donotcoloroutermaths$\bullet$}}}
+\setbeamertemplate{enumerate item}{\textcolor{uvaaccent}{\insertenumlabel.}}
+\setbeamertemplate{enumerate subitem}{\textcolor{uvaaccent}{\insertenumlabel.\insertsubenumlabel}}
+\setbeamertemplate{enumerate subsubitem}{\textcolor{uvaaccent}{\insertenumlabel.\insertsubenumlabel.\insertsubsubenumlabel}}
+\setbeamertemplate{enumerate mini template}{\textcolor{uvaaccent}{\insertenumlabel}}
+
+
+
+% Custom fonts
+\ifUT@fonts
+\usefonttheme{structuresmallcapsserif} % MetaSerifWeb,Arial,serif
+% set Charter as serif font, it is close to the commercial Meta Web font
+\renewcommand*\rmdefault{bch} 
+% Computer Modern Sans Serif for sans serif text matches Meta Web Sans somewhat
+\renewcommand*\sfdefault{cmss} % MetaWeb,Arial,sans-serif
+\renewcommand*\ttdefault{lmtt}
+\fi
+
+% language
+\ifUT@dutch
+\def \institute{Universiteit van Amsterdam}
+\else
+\def \institute{University of Amsterdam}
+\fi
+
+
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{blocks}[shadow=false]  
+
+\mode<all>

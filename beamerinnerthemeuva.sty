@@ -1,0 +1,47 @@
+\mode<presentation>
+
+\setbeamertemplate{background}{
+  \begin{tikzpicture}
+    \useasboundingbox[fill=uvabackground] (0,0) rectangle(\the\paperwidth,\the\paperheight);
+  
+    \node[inner sep=0] (logo) at (2.5,8.85) {\includegraphics[scale=0.1]{uvalogo.png}\hspace*{-3.5pt}\begin{tabular}{ l }
+            \textbf{\textsc{\textrm{\scriptsize\institute}}} \\[-5pt]
+            \textsc{\textrm{\scriptsize\UT@department}} \\ [8pt]
+        \end{tabular} };
+  
+    \ifnum\thepage<2\relax
+        \node[] 
+              (titlegraphic)
+              {\parbox[0,0][100pt][c]{300pt}{
+                \usebeamercolor[fg]{titlegraphic}\inserttitlegraphic}};
+        \fill[color=uvaaside] (0,0) rectangle (\the\paperwidth,1.8);
+        \fill[color=uvaaccent] (0,5.4) rectangle(\the\paperwidth,5.6);
+        \fill[color=uvadetail] (0,5.5) rectangle(\the\paperwidth, 7.5); 
+    \else
+        \fill[color=uvaaside] (0,0) rectangle (\the\paperwidth,0.5);
+    \fi
+  \end{tikzpicture}
+}
+
+% Title page
+\defbeamertemplate*{title page}{uva}[1][]
+{ 
+   \vskip19pt
+    \begin{beamercolorbox}[leftskip=2cm,sep=8pt,#1, wd=360pt, right]{title page header}
+      \usebeamerfont{title}\LARGE \inserttitle\par%
+    \end{beamercolorbox}
+    \vskip108pt
+    
+    \begin{beamercolorbox}[wd=360pt,leftskip=2cm,sep=8pt,#1, right]{author}
+      \usebeamerfont{author}\insertauthor%
+    \end{beamercolorbox}
+    \vskip-8pt
+    \begin{beamercolorbox}[wd=360pt,leftskip=2cm,sep=8pt,#1, right]{date}
+      \usebeamerfont{author}\insertdate%
+    \end{beamercolorbox}
+    \vskip-100pt
+  \vfill
+}
+
+\mode
+<all>

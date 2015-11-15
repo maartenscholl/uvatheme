@@ -1,0 +1,54 @@
+\mode<presentation>
+
+% Frame title
+\defbeamertemplate*{frametitle}{uva}[1][]
+{
+\vskip1cm%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=1.2cm]{frametitle} 
+  \begin{tikzpicture}
+
+  \useasboundingbox (0,0) rectangle(\the\paperwidth,1.2);
+  \fill[uvaaccent] (0,0) rectangle(2.5,1.1);
+  \fill[uvadetail] (2.5,0) rectangle(10.5,1.1);
+  \fill[uvaaccent] (10.5,0) rectangle(13,1.1); 
+   
+   
+   \ifx\insertsubsection\@empty
+        {\node[anchor=west, black,font=\tiny, left] at (12.8,1.8){\insertsection};}
+   \else
+        {\ifx\insertsubsubsection\@empty
+            {\node[anchor=west, black,font=\tiny, left] at (12.8,1.8){\insertsection};
+             \node[anchor=west, black,font=\tiny, left] at (12.8,1.5){\insertsubsection};}
+        \else
+            {\node[anchor=west, black,font=\tiny, left] at (12.8,1.95){\insertsection};
+             \node[anchor=west, black,font=\tiny, left] at (12.8,1.65){\insertsubsection};
+             \node[anchor=west, black,font=\tiny, left] at (12.8,1.35){\insertsubsubsection};}
+        \fi}
+   \fi
+   
+   \ifx\insertframesubtitle\@empty%
+      {\node[ white,font=\LARGE] at (\the\paperwidth/2,0.56){\insertframetitle};}
+   \else
+      {\node[white,font=\LARGE] at (\the\paperwidth/2,0.67){\insertframetitle};
+       \node[white,font=\small] at (\the\paperwidth/2,0.27){\insertframesubtitle};}
+   \fi
+   
+  \end{tikzpicture}
+  \end{beamercolorbox}
+}
+
+\defbeamertemplate*{footline}{uva}
+{
+    \ifnum\thepage>1\relax
+            
+        \vskip-1.2cm%
+          \begin{beamercolorbox}[wd=\paperwidth,ht=1.2cm]{frametitle} 
+          \begin{tikzpicture}  
+            \useasboundingbox (0,0) rectangle(\the\paperwidth,1.2);
+            {\node[black,font=\tiny] at (\the\paperwidth/2,0.2){\insertpagenumber/\insertpartendpage};}
+          \end{tikzpicture}
+          \end{beamercolorbox}
+    \fi
+}
+
+\mode<all>
